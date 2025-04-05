@@ -1,3 +1,35 @@
 body{
-  background-color: rgb(104, 22, 10);
+    background-color: rgb(111, 193, 118);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    border-radius: 40%;
+    border-color: black;
+}
+
+html{
+    font-family: 'Courier New';
+    background-color: rgb(22, 197, 89);
+}
+
+a{
+    color: rgb(21, 66, 9);
+    text-underline-offset: .3rem;
+}
+
+img{ 
+    clip-path: ellipse(65px 70px);
+}
+
+li{
+    padding-bottom: 6px;
+    background-color: rgb(78, 174, 78);
+    border-radius: 3px;
+    margin: 6px;    
+}
+ul{
+    margin: 0;
+    padding: 0;
 }
