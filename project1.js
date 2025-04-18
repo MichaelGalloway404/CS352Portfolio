@@ -12,7 +12,7 @@ let RECT_MIN_H = 25;
 let RECT_MAX_H = 200;
 
 // random upper bounds of rect stroke weight
-let STROKE_MAX = 10;
+let STROKE_MAX = 5;
 
 function setup() {
     let canvas = createCanvas(400, 400);
@@ -24,14 +24,20 @@ function setup() {
     noLoop();
 
     background(color('black'));
-    // variable for random color selection, with a slightly higher chance of white
-    let colors = [color('red'),color('yellow'),color('blue'),color('white'),color('white')];
+    
       
     // start by offseting screen to give a feel that there is more out of view
     for(let i = -200; i < width; i += rectWidth){
       rectWidth = random(RECT_MIN_W,RECT_MAX_W);
       strokeWeight(random(STROKE_MAX));
       for (let j = -200; j < width; j += rectHeight){
+        // variable for random color selection, with a slightly higher chance of white
+        let colors = [
+          color(random(200,255), 0, 0),// red
+          color(random(200,255), random(200,255), 0),// yellow
+          color(0, 0, random(200,255)),// blue
+          color('white'), color('white')// double white for a greater chance
+        ];
         // fill with one of four random colors
         fill(color(colors[Math.floor(random(5))]));
         // make it only about a 5% chance that a rectangle will be black

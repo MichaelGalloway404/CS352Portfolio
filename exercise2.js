@@ -4,6 +4,7 @@ let offset_y = 200;
 let Q_offset_x = 50;
 let Q_offset_y = 50;
 
+// prevent mouse click from generating more than one image
 let canLoop = true;
 
 function setup() {
@@ -13,7 +14,7 @@ function setup() {
 
 function draw() {
   noLoop();
-  
+
   let r = random(255);
   let g = random(255);
   let b = random(255);
@@ -59,6 +60,7 @@ function draw() {
   pop()
 }
 function mousePressed() {
+  // only loop if canLoop has been reset by releasing the mouse
   if(canLoop){
     loop();
     canLoop = false;
