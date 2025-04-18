@@ -4,13 +4,16 @@ let offset_y = 200;
 let Q_offset_x = 50;
 let Q_offset_y = 50;
 
+let canLoop = true;
+
 function setup() {
   let canvas = createCanvas(400, 400);
   canvas.parent('sketch-holder'); // Attach the canvas to a specific div
-  frameRate(1);
 }
 
 function draw() {
+  noLoop();
+  
   let r = random(255);
   let g = random(255);
   let b = random(255);
@@ -51,15 +54,20 @@ function draw() {
     r = random(255);
     g = random(255);
     b = random(255);
-      fill(color(r,g,b));
+    fill(color(r,g,b));
     quad(Q_offset_x+random(160), Q_offset_x+random(160), Q_offset_x+random(160), Q_offset_x+random(160),Q_offset_x+random(160), Q_offset_x+random(160), Q_offset_x+random(160), Q_offset_x)+random(160);
   pop()
 }
 function mousePressed() {
-  frameRate(2);
+  if(canLoop){
+    loop();
+    canLoop = false;
+  }
+  // turn looping back off
+  noLoop();
 }
 function mouseReleased() {
-  frameRate(0);
+  canLoop = true;
 }
 // This function is triggered automatically whenever a key is pressed
 function keyPressed() {
