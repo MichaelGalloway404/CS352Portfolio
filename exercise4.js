@@ -26,12 +26,13 @@ function setup() {
   
     background(0);
     fill(255, 220, 150);  
-    frameRate(20);
+    frameRate(10);
   }
 function draw(){
     let r = random(255);
     let g = random(255);
     let b = random(255);
+
     incrementer+=.05;
     // only change stroke color on reset
     if(incrementer > 17){
@@ -48,15 +49,15 @@ function draw(){
     }
 
     // apla fade for bubbles
-    fade-=10;
-    if(fade <0 ){
+    fade -= 10;
+    if(fade < 0 ){
         fade=255
     }
     
     // grow text
     textSize(incrementer);
-    text(lyrics, 60+incrementer, 60+incrementer);
-    strokeWeight(5);
+    text(lyrics, 60, 60);
+    strokeWeight(6);
 }
 
 // creates random bubbles
