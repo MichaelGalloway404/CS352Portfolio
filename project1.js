@@ -19,42 +19,38 @@ function setup() {
     canvas.parent('sketch-holder');
   }
   
-  function draw() {
-    // placing no loop here allows for one image to generate then pause
-    noLoop();
-
-    background(color('black'));
+function draw() {
+  // placing no loop here allows for one image to generate then pause
+  noLoop();
+  background(color('black'));
     
-      
-    // start by offseting screen to give a feel that there is more out of view
-    for(let i = -200; i < width; i += rectWidth){
-      rectWidth = random(RECT_MIN_W,RECT_MAX_W);
-      strokeWeight(random(STROKE_MAX));
-      for (let j = -200; j < width; j += rectHeight){
-        // variable for random color selection, with a slightly higher chance of white
-        let colors = [
-          color(random(200,255), 0, 0),// red
-          color(random(200,255), random(200,255), 0),// yellow
-          color(0, 0, random(200,255)),// blue
-          color('white'), color('white')// double white for a greater chance
-        ];
-        // fill with one of four random colors
-        fill(color(colors[Math.floor(random(5))]));
-        // make it only about a 5% chance that a rectangle will be black
-        let rand = random(100);
-        if(rand < 95){
-          rectHeight = random(RECT_MIN_H,RECT_MAX_H);
+  // start by offseting screen to give a feel that there is more out of view
+  for(let i = -200; i < width; i += rectWidth){
+    rectWidth = random(RECT_MIN_W,RECT_MAX_W);
+    strokeWeight(random(STROKE_MAX));
+    for (let j = -200; j < width; j += rectHeight){
+      // variable for random color selection, with a slightly higher chance of white
+      let colors = [
+        color(random(200,255), 0, 0),// red
+        color(random(200,255), random(200,255), 0),// yellow
+        color(0, 0, random(200,255)),// blue
+        color('white'), color('white')// double white for a greater chance
+      ];
+      // fill with one of four random colors
+      fill(color(colors[Math.floor(random(5))]));
+      // make it only about a 5% chance that a rectangle will be black
+      let rand = random(100);
+      if(rand < 95){
+        rectHeight = random(RECT_MIN_H,RECT_MAX_H);
 
-          // place a rect at possition i/j which is the last random rectWidth/rectHeight
-          // this will nicely aline all shapes, I then shrink each rect by STROKE_MAX
-          // to prevent any overlapping of lines and shapes.
-          rect(i,j,rectWidth-STROKE_MAX,rectHeight-STROKE_MAX);
-        }
+        // place a rect at possition i/j which is the last random rectWidth/rectHeight
+        // this will nicely aline all shapes, I then shrink each rect by STROKE_MAX
+        // to prevent any overlapping of lines and shapes.
+        rect(i,j,rectWidth-STROKE_MAX,rectHeight-STROKE_MAX);
       }
-    }   
-  }
-
-  
+    }
+  }   
+}
 
 // function to save image as png
 function keyPressed() {
