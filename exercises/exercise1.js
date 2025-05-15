@@ -11,5 +11,4 @@ function setup() {
 
   // Draw the image.
   image(img, 0, 0);
-
 }

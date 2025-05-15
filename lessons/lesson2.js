@@ -19,3 +19,10 @@ function draw() {
     line(i, 0, 0, i);
   }
 }
+function keyPressed() {
+    // Check if the user pressed the 's' key
+    if (key === 's' || key === 'S') {
+      // Save the canvas as an image file (PNG format)
+      saveCanvas('my_sketch', 'png');
+    }
+  }
