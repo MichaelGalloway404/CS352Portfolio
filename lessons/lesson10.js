@@ -1,19 +1,20 @@
-// Declare video variable
 let myVideo;
+let img;
 let playBtn;
 let button = document.getElementById("my-play-button");
 let buttonPress = 0;
 
 function preload() {
-    myVideo = createVideo(['../sample.mp4']);
+    myVideo = createVideo(['../sample2.mp4']);
+    img = loadImage('../overlayYellowFace.png'); // Load a transparent image to overlay
 }
 
 function setup() {
-    let canvas = createCanvas(350, 200);
+    let canvas = createCanvas(200, 200);
     canvas.parent('sketch-holder');
-    myVideo.size(40, 40);
     myVideo.loop();
     myVideo.hide(); 
+    frameRate(5);
 
     playBtn = select('#my-play-button'); // this is a css tag ID for styling
     playBtn.mousePressed(() => {
@@ -30,20 +31,17 @@ function setup() {
 }
 
 function draw() {
-  // Overlay random flickering blocks (like Paik’s layered TV screens)
-  let cols = 6;
-  let rows = 4;
-  let w = width / cols;
-  let h = height / rows;
+  image(myVideo, 0, 0, random(150,width), random(150,height));
 
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      fill(random(255), random(255), random(255), 150);
-      noStroke();
-      image(myVideo, i * w, j * h, w, h);
-      rect(i * w, j * h, w, h);
-    }
-  }
+  blendMode(ADD); // Set blend mode for light effect
+    image(img, -5,-5,150,200);
+  
+  blendMode(BLEND); // Reset to default blend mode
+  let r = random(255);
+  let g = random(255);
+  let b = random(255);
+  fill(r,g,b,50);
+  rect(0,0,200,200);
 }
 
 function pauseVideo() {
