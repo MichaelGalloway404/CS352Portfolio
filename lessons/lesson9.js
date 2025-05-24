@@ -1,68 +1,53 @@
 // Declare video variable
 let myVideo;
 let playBtn;
-let addColors = false;
 let button = document.getElementById("my-play-button");
 let buttonPress = 0;
 
 function preload() {
-    // Load the video inside preload() to ensure it's ready before setup()
     myVideo = createVideo(['../sample.mp4']);
-    // myVideo.volume(0); // or video.muted = true;
-    // myVideo.play();
 }
 
 function setup() {
     let canvas = createCanvas(350, 200);
     canvas.parent('sketch-holder');
-    
-
-
-    // canvas.hide();
     myVideo.size(40, 40);
     myVideo.loop();
-    myVideo.hide(); // hides default video element
+    myVideo.hide(); 
 
     playBtn = select('#my-play-button'); // this is a css tag ID for styling
     playBtn.mousePressed(() => {
-        // canvas.show();
-        addColors = true;
         myVideo.play();
         buttonPress++;
         if (buttonPress % 2 == 0) {
             button.innerHTML = "Play";
-            addColors = false;
             pauseVideo();
         } else {
             button.innerHTML = "Pause";
-            addColors = true;
             myVideo.play();
         }
     });
-    
-
-    // playButton = createButton('Play Video');
-    // playButton.position(0, 0);
-    // playButton.mousePressed(playVideo);
-    // playButton.class('my-play-button'); // Add your custom CSS class
-
 }
 
 function draw() {
-    // Draw the video on the canvas
-    image(myVideo, 0, 0, width, height);
-    drawGrid();
+  
+  
+  // Overlay random flickering blocks (like Paik’s layered TV screens)
+  let cols = 6;
+  let rows = 4;
+  let w = width / cols;
+  let h = height / rows;
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      fill(random(255), random(255), random(255), 150);
+      noStroke();
+      image(myVideo, i * w, j * h, w, h);
+      rect(i * w, j * h, w, h);
+    }
+  }
 }
 
-function drawGrid() {
-    for (let i = 0; i < 210; i+=10) {
-        for (let j = 0; j < 360; j+=10) {
-            fill(0);
-            rect(0, i, 350, 1);
-            rect(j, 0, 1, 200);
-        }
-    }
-}
 
 function pauseVideo() {
     myVideo.pause();
@@ -80,3 +65,31 @@ function keyPressed() {
         saveGif('mySketch', 5);
     }
 }
+
+// // Declare video variable
+// let myVideo;
+
+// function preload() {
+//   myVideo = createVideo(['../sample.mp4']);
+// }
+
+// function setup() {
+//   createCanvas(400, 400);
+//   myVideo.size(400, 400);
+//   myVideo.loop();
+//   myVideo.hide();
+// }
+
+// function draw() {
+//   image(myVideo, 0, 0, width, height); // Base video layer
+  
+//   // Overlay rotating transparent ellipses to mimic visual feedback
+//   noFill();
+//   stroke(255, 100);
+//   translate(width / 2, height / 2);
+
+//   for (let i = 0; i < 10; i++) {
+//     rotate(frameCount * 0.01);
+//     ellipse(0, 0, i * 20, i * 20);
+//   }
+// }
