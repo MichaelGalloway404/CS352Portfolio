@@ -6,7 +6,6 @@ body{
     flex-direction: column;
     border-radius: 40%;
     border-color: black;
-    
 }
 
 html{
@@ -40,6 +39,14 @@ ul{
     margin-top: 40px;
   }
 
+#my-play-button{
+    background-color: rgb(255, 200, 0);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 3rem;
+    margin: 25px;;
+}
 .container.p1 > .paragraph{
     color: rgb(14, 200, 42);
     background-color: black;

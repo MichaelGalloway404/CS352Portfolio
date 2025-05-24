@@ -93,7 +93,7 @@ function draw() {
         if (fade_to_black >= 255) {
             final_fade_dog += 1;
             fill(255, 255, 255, final_fade_dog);
-            text("In Loving Memory\n    of this little\n      chunk", 100, 300);
+            text("In Loving Memory\n    of this little\n      chunck", 100, 300);
             push();
             tint(255, final_fade_dog);
             photo_sophia.resize(600, 0);
