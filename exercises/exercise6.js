@@ -164,4 +164,9 @@ function keyPressed() {
     if (key === 'g') {
         saveGif('mySketch', 5);
     }
+    // full screen
+    if(key === 'f'){
+        let fs = fullscreen();
+        fullscreen(!fs); // Toggle fullscreen mode
+    }
 }

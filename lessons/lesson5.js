@@ -11,10 +11,10 @@ let walk2 = '| |';
 let step = 0;
 
 function setup() {
-    let canvas = createCanvas(400, 400);
+    let canvas = createCanvas(800, 400);
     canvas.parent('sketch-holder');
     textAlign(CENTER, CENTER);
-    textSize(50);
+    textSize(25);
 }
 
 function draw() {
