@@ -3,6 +3,7 @@ let myVideo;
 let playBtn;
 let button = document.getElementById("my-play-button");
 let buttonPress = 0;
+let play = false;
 
 function preload() {
     myVideo = createVideo(['../sample3.mp4']);
@@ -18,6 +19,7 @@ function setup() {
     playBtn = select('#my-play-button'); // this is a css tag ID for styling
     playBtn.mousePressed(() => {
         myVideo.play();
+        play = !play;
         buttonPress++;
         if (buttonPress % 2 == 0) {
             button.innerHTML = "Play";
@@ -30,36 +32,39 @@ function setup() {
 }
 
 function draw() {
-    // overlay a few instances of the video
-    image(myVideo, 0, 0, width, height);
-    image(myVideo, 0, 0, width, height / 3);
+    if (play) {
+        // overlay a few instances of the video
+        image(myVideo, 0, 0, width, height);
+        image(myVideo, 0, 0, width, height / 3);
 
-    // have one instance rotate
-    push();
-    translate(width / 2, height / 2);
-    rotate(frameCount * 0.01);
-    image(myVideo, -250, -350, 500, 700);
-    pop();
+        // have one instance rotate
+        push();
+        translate(width / 2, height / 2);
+        rotate(frameCount * 0.01);
+        image(myVideo, -250, -350, 500, 700);
+        pop();
 
-    image(myVideo, 0, 0, width / 2, height);
+        image(myVideo, 0, 0, width / 2, height);
 
-    filter(GRAY);
+        filter(GRAY);
 
-    // blend for a vibrant effect
-    blendMode(ADD);
-    image(myVideo, 0, 0, width, height);
-    blendMode(BLEND);
+        // blend for a vibrant effect
+        blendMode(ADD);
+        image(myVideo, 0, 0, width, height);
+        blendMode(BLEND);
 
-    // let cropped = myVideo.get(100, 100, 200, 200);
-    //   image(cropped, 0, 0);
+        // let cropped = myVideo.get(100, 100, 200, 200);
+        //   image(cropped, 0, 0);
 
-    loadPixels();
-    for (let i = 0; i < pixels.length; i += 4) {
-        pixels[i] = 255 - pixels[i];         // Invert red channel
-        pixels[i + 1] = 255 - pixels[i + 1]; // Invert green
-        pixels[i + 2] = 255 - pixels[i + 2]; // Invert blue
+        loadPixels();
+        for (let i = 0; i < pixels.length; i += 4) {
+            pixels[i] = 255 - pixels[i];         // Invert red channel
+            pixels[i + 1] = 255 - pixels[i + 1]; // Invert green
+            pixels[i + 2] = 255 - pixels[i + 2]; // Invert blue
+        }
+        updatePixels();
     }
-    updatePixels();
+
 
 
     // Useful p5.MediaElement Methods
