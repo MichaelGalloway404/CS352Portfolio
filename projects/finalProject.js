@@ -19,6 +19,8 @@ let photo_arm_l;
 let blink_timer = 0;
 let direction = 'L';
 
+let background_music;
+
 function preload() {
     photo_BG = loadImage('../fence.jpg');
     photo_Face_Resting = loadImage('../FaceResting.png');
@@ -29,6 +31,8 @@ function preload() {
     photo_leg_L = loadImage('../Leg_facing_L.png');
     photo_arm_r = loadImage('../arm_r.png');
     photo_arm_l = loadImage('../arm_l.png');
+
+    background_music = loadSound('../background_mus.wav'); 
 }
 
 function setup() {
@@ -91,6 +95,9 @@ function draw() {
 }
 
 function keyPressed() {
+  if (!background_music.isPlaying()) {
+    background_music.play();
+  }
   if (key === 'w' || key === 'W') {
     if (onGround) {
       velocityY = jumpForce;
@@ -134,7 +141,11 @@ function drawRobot(x, y, isMoving) {
     image(photo_Face_Pain,x-35,y-75,75,75);
   }
 
-  
-  
-  
 }
+// function mousePressed() {
+//   if (background_music.isPlaying()) {
+//     background_music.stop();
+//   } else {
+//     background_music.play();
+//   }
+// }
