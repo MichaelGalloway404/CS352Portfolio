@@ -81,6 +81,9 @@ function setup() {
 
   myVideo.hide();
   myVideo.volume(0);
+  if (!background_music.isPlaying()) {
+    background_music.loop();
+  }
 }
 
 function draw() {
