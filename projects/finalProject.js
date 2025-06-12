@@ -81,9 +81,6 @@ function setup() {
 
   myVideo.hide();
   myVideo.volume(0);
-  if (!background_music.isPlaying()) {
-    background_music.loop();
-  }
 }
 
 function draw() {
@@ -268,6 +265,9 @@ function draw() {
 }
 
 function keyPressed() {
+  if (!background_music.isPlaying()) {
+    background_music.loop();
+  }
   if (key === 's' || key === 'S') {
     if (interact) {
       speak = true;
@@ -279,6 +279,9 @@ function keyPressed() {
 }
 
 function mousePressed() {
+  if (!background_music.isPlaying()) {
+    background_music.loop();
+  }
   if (interact) {
     speak = true;
   }
@@ -370,5 +373,13 @@ function drawPlayer(x, y, isMoving) {
     image(photo_Face_Talk, x - 35, y - 75, 75, 75);
   } else {
     image(photo_Face_Pain, x - 35, y - 75, 75, 75);
+  }
+}
+
+
+
+function mouseMoved() {
+  if (!background_music.isPlaying()) {
+    background_music.loop();
   }
 }
