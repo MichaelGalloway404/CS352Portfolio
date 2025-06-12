@@ -265,6 +265,9 @@ function draw() {
 }
 
 function keyPressed() {
+  if (!background_music.isPlaying()) {
+    background_music.loop();
+  }
   if (key === 's' || key === 'S') {
     if (interact) {
       speak = true;
@@ -276,6 +279,9 @@ function keyPressed() {
 }
 
 function mousePressed() {
+  if (!background_music.isPlaying()) {
+    background_music.loop();
+  }
   if (interact) {
     speak = true;
   }
